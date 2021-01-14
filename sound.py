@@ -3,8 +3,11 @@ from pprint import pformat
 
 DEFAULT = 0
 sd.default.channels = 2
-sd.default.dtype = 'int16'
-sd.default.latency = 'low'
+sd.default.dtype = 'float32'
+sd.default.blocksize = 18000
+sd.default.dither_off = True
+sd.default.latency = 'high'
+sd.default.clip_off = True
 sd.default.samplerate = 48000
 
 
@@ -25,7 +28,7 @@ class PCMStream:
             self.stream.stop()
             self.stream.close()
 
-        self.stream = sd.RawInputStream(device=num)
+        self.stream = sd.RawInputStream(device=num, blocksize=18000)
         self.stream.start()
 
 

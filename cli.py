@@ -12,6 +12,7 @@ async def connect(bot, stream, device_id, channel_id, token):
         stream.change_device(device_id)
 
         voice = await channel.connect()
+        discord.FFmpegAudio
         voice.play(discord.PCMAudio(stream))
 
         print(f'Playing audio in {channel.name}')
